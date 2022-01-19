@@ -46,8 +46,9 @@ const TimerItem = props => {
   }, [index, isEdit, minusItem]);
 
   const deleteItem = useCallback(() => {
+    stopCount();
     minusItem && minusItem(index);
-  }, [index, minusItem]);
+  }, [index, minusItem, stopCount]);
 
   const editItem = useCallback(() => {
     setIsInputText(true);

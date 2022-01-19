@@ -12,10 +12,10 @@ import {images, textSizes, colors, metrics} from '../../ultils/contants';
 import TimerItem from './timerItem';
 
 const TimerScreen = () => {
-  const [timers, setTimers] = useState([{}]);
+  const [timers, setTimers] = useState([]);
 
   const addItem = useCallback(() => {
-    setTimers(timersState => [...timersState, {}]);
+    setTimers(timersState => [...timersState, {key: new Date().toISOString()}]);
   }, []);
 
   const minusItem = useCallback(indexItem => {
@@ -53,6 +53,7 @@ const TimerScreen = () => {
           <FlatList
             data={timers}
             renderItem={timerItem}
+            keyExtractor={item => item.key}
             ListFooterComponent={footerAddItem}
             ListHeaderComponent={headerList}
           />

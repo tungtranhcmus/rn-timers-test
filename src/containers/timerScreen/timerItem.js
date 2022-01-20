@@ -40,10 +40,13 @@ const TimerItem = props => {
       setTitle(refTitle.current);
       setProject(refProject.current);
       setIsInputText(false);
+      if (isStart) {
+        startCount();
+      }
     } else {
       minusItem && minusItem(index);
     }
-  }, [index, isEdit, minusItem]);
+  }, [index, isEdit, isStart, minusItem, startCount]);
 
   const deleteItem = useCallback(() => {
     stopCount();
